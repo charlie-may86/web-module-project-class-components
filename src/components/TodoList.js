@@ -6,15 +6,17 @@ import React, { Component } from "react";
 import Todo from "./Todo";
 
 const TodoList = (props) => {
-   const list = props.list
-    return (
-        <div>
-          <Todo list={list}/>
-          <div>This says something else: {list[0].task}</div>
-        </div>
-      );
-    
-}
-   
+  const list = props.list;
+
+  return (
+    <div>
+      {props.list.map((item) => {
+        return <Todo item={item} />;
+      })}
+
+      <div>This says something else: {list[0].task}</div>
+    </div>
+  );
+};
 
 export default TodoList;
