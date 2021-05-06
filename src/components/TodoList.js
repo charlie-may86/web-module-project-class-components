@@ -1,20 +1,17 @@
 // your components will all go in this `component` directory.
 // feel free to change this component.js into TodoList.js
 
-import { render } from "@testing-library/react";
-import React, { Component } from "react";
+import React from "react";
 import Todo from "./Todo";
 
 const TodoList = (props) => {
-  const list = props.list;
-
+  const handleComplete = props.handleComplete;
   return (
     <div>
-      {props.list.map((item) => {
-        return <Todo item={item} />;
-      })}
-
-      <div>This says something else: {list[0].task}</div>
+      {props.list.map((item) => (
+        <Todo handleComplete={handleComplete} item={item} key={item.id} />
+      ))}
+      <button className="clear-btn">Clear Completed</button>
     </div>
   );
 };
