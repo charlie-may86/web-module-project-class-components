@@ -42,8 +42,6 @@ class App extends React.Component {
   };
 
   handleComplete = (itemId) => {
-    
-
     this.setState({
       list: this.state.list.map((item) => {
         if (itemId === item.id) {
@@ -57,13 +55,26 @@ class App extends React.Component {
     });
   };
 
+  handleClear = () => {
+    const newList = this.state.list.filter((item) => {
+      return !item.completed;
+    });
+
+    this.setState({
+      list: newList,
+    });
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <div>
-          <TodoList list={this.state.list} 
-          handleComplete={this.handleComplete}  />
+          <TodoList
+            list={this.state.list}
+            handleComplete={this.handleComplete}
+            handleClear={this.handleClear}
+          />
         </div>
         <ListForm itemAdd={this.itemAdd} />
       </div>

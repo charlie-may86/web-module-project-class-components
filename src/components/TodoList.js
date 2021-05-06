@@ -6,12 +6,17 @@ import Todo from "./Todo";
 
 const TodoList = (props) => {
   const handleComplete = props.handleComplete;
+  const handleClick = () => {
+    props.handleClear();
+  };
   return (
     <div>
       {props.list.map((item) => (
         <Todo handleComplete={handleComplete} item={item} key={item.id} />
       ))}
-      <button className="clear-btn">Clear Completed</button>
+      <button onClick={handleClick} className="clear-btn">
+        Clear Completed
+      </button>
     </div>
   );
 };
